@@ -1,0 +1,220 @@
+{
+  "2026-03-13": {
+    "trains": [
+      {
+        "id": "1312NKKNN",
+        "departments": {
+          "Mechanical": {
+            "brake_pressure": "1",
+            "wheel_condition": "Fair",
+            "engine_temp": "1",
+            "fuel_level": "1",
+            "oil_pressure": "1",
+            "horn_status": "Functional",
+            "headlight_status": "All OK",
+            "coupling_status": "Secure",
+            "door_mechanism": "Functional",
+            "air_condition": "Functional",
+            "track_clearance": "1",
+            "suspension_check": "Pass",
+            "battery_voltage": "1",
+            "signal_system": "Operational",
+            "emergency_brake": "Pass",
+            "pantograph_status": "Good",
+            "track_adhesion": "Normal",
+            "speed_governor": "1",
+            "remarks": "not good",
+            "clearance_status": "Not Cleared",
+            "submittedBy": "rajveer",
+            "submittedAt": "19:39"
+          },
+          "Electrical": {
+            "brake_pressure": "111",
+            "wheel_condition": "Fair",
+            "engine_temp": "11",
+            "fuel_level": "111",
+            "oil_pressure": "1111",
+            "horn_status": "Faulty",
+            "headlight_status": "Partial",
+            "coupling_status": "Loose",
+            "door_mechanism": "Functional",
+            "air_condition": "Partial",
+            "track_clearance": "11",
+            "suspension_check": "Monitor",
+            "battery_voltage": "11",
+            "signal_system": "Operational",
+            "emergency_brake": "Pass",
+            "pantograph_status": "Good",
+            "track_adhesion": "Normal",
+            "speed_governor": "11",
+            "remarks": "seems good",
+            "clearance_status": "Conditional Clearance",
+            "submittedBy": "w2",
+            "submittedAt": "22:58"
+          }
+        }
+      },
+      {
+        "id": "3E2WFHBSJ",
+        "departments": {}
+      },
+      {
+        "id": "231FDGHFG",
+        "departments": {}
+      }
+    ]
+  },
+  "2026-03-14": {
+    "trains": [
+      {
+        "id": "TRN-1004",
+        "coaches": [
+          "248783",
+          "248791",
+          "248790",
+          "248788",
+          "248789",
+          "248786",
+          "248787",
+          "248782"
+        ],
+        "departments": {
+          "Mechanical": {
+            "248782": [
+              {
+                "comment": "8th",
+                "worker": "w1",
+                "time": "20:32"
+              },
+              {
+                "comment": "this looks good for.",
+                "worker": "w1",
+                "time": "20:33"
+              }
+            ],
+            "248783": [
+              {
+                "comment": "1st mech.",
+                "worker": "w1",
+                "time": "20:31"
+              },
+              {
+                "comment": "hi",
+                "worker": "nikku",
+                "time": "20:53"
+              },
+              {
+                "comment": "rdtrfygtuhjgvfcdsdrfghj",
+                "worker": "nikku",
+                "time": "20:56"
+              }
+            ],
+            "248786": [
+              {
+                "comment": "6th",
+                "worker": "w1",
+                "time": "20:32"
+              }
+            ],
+            "248787": [
+              {
+                "comment": "7th",
+                "worker": "w1",
+                "time": "20:32"
+              }
+            ],
+            "248788": [
+              {
+                "comment": "4th",
+                "worker": "w1",
+                "time": "20:31"
+              }
+            ],
+            "248789": [
+              {
+                "comment": "5th",
+                "worker": "w1",
+                "time": "20:32"
+              }
+            ],
+            "248790": [
+              {
+                "comment": "3rd mech.",
+                "worker": "w1",
+                "time": "20:31"
+              }
+            ],
+            "248791": [
+              {
+                "comment": "2nd mech.",
+                "worker": "w1",
+                "time": "20:31"
+              },
+              {
+                "comment": "j",
+                "worker": "w1",
+                "time": "20:31"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "TRN-1011",
+        "coaches": [
+          "128178",
+          "108564",
+          "128182",
+          "048081",
+          "128181",
+          "148037",
+          "048094",
+          "128177"
+        ],
+        "departments": {
+          "Mechanical": {
+            "128178": [
+              {
+                "comment": "sdfs",
+                "worker": "w1",
+                "time": "21:12"
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "2026-03-15": {
+    "trains": [
+      {
+        "id": "TRN-1004",
+        "coaches": [
+          "248783",
+          "248791",
+          "248790",
+          "248788",
+          "248789",
+          "248786",
+          "248787",
+          "248782"
+        ],
+        "departments": {}
+      },
+      {
+        "id": "TRN-1010",
+        "coaches": [
+          "048048",
+          "158456",
+          "018115",
+          "018110",
+          "048093",
+          "158457",
+          "018114",
+          "018044"
+        ],
+        "departments": {}
+      }
+    ]
+  }
+}
