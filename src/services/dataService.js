@@ -4,7 +4,7 @@
 const API_BASE = 'http://localhost:3001/api';
 const MAX_DAYS = 31;
 
-const formatDate = (d) => d.toISOString().split("T")[0];
+const formatDate = (d) => d.toISOString().split('T')[0];
 
 const cleanOldData = (data) => {
   const now = new Date();
@@ -24,13 +24,13 @@ export const loadData = async (seed) => {
     const data = await response.json();
     return cleanOldData(data);
   } catch (e) {
-    console.warn("RailTracker: failed to load stored data", e);
+    console.warn('RailTracker: failed to load stored data', e);
     return cleanOldData(seed);
   }
 };
 
-export const saveData = async (data) => {
-  // Data is saved on the server, no local save needed
+export const saveData = async () => {
+  // server side persistence used directly by API
 };
 
 export const addTrain = async (data, date, trainId, coaches = []) => {
@@ -48,7 +48,7 @@ export const addTrain = async (data, date, trainId, coaches = []) => {
       return { ...data, [date]: d };
     }
   } catch (e) {
-    console.warn("RailTracker: failed to add train", e);
+    console.warn('RailTracker: failed to add train', e);
   }
   return data;
 };
@@ -68,7 +68,7 @@ export const deleteTrain = async (data, date, trainId) => {
       return { ...data, [date]: d };
     }
   } catch (e) {
-    console.warn("RailTracker: failed to delete train", e);
+    console.warn('RailTracker: failed to delete train', e);
   }
   return data;
 };
@@ -94,9 +94,10 @@ export const submitInspection = async (data, date, trainId, dept, coach, inspect
       return { ...data, [date]: d };
     }
   } catch (e) {
-    console.warn("RailTracker: failed to submit inspection", e);
+    console.warn('RailTracker: failed to submit inspection', e);
   }
   return data;
 };
 
 export const formatToday = () => formatDate(new Date());
+
