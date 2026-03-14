@@ -23,10 +23,7 @@ export function AdminPanel({ adminDate, setAdminDate, trainSelection, setTrainSe
         <div style={{flex:1, fontSize:'13px', color:'#374151', lineHeight:'1.4'}}>{coaches.join(', ') || 'No coaches mapped'}</div>
         <button className="btn" onClick={onAddTrain}>Add</button>
       </div>
-
-      <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '10px' }}>
-        <button className="btn-secondary" onClick={() => onExport(adminDate)}>Download inspection XLSX</button>
-      </div>
+      
       <div className="train-list">
         <h4>Trains for {adminDate}</h4>
         {trainsForDate.length === 0 ? (

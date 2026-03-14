@@ -338,7 +338,6 @@ export default function App() {
           onAddTrain={addTrain}
           trainsForDate={getTrains(adminDate)}
           onDeleteTrain={deleteTrain}
-          onExport={() => downloadInspectionAsXlsx(adminDate)}
         />
       ) : (
         <WorkerPanel
@@ -357,7 +356,13 @@ export default function App() {
         />
       )}
 
-      <ViewPanel viewDate={viewDate} setViewDate={setViewDate} data={data} />
+      <ViewPanel
+        viewDate={viewDate}
+        setViewDate={setViewDate}
+        data={data}
+        role={role}
+        onDownload={() => downloadInspectionAsXlsx(viewDate)}
+      />
     </div>
   );
 }

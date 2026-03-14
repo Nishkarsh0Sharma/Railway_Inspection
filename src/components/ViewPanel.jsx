@@ -3,7 +3,7 @@ import React from 'react';
 const DEPARTMENTS = ['Mechanical', 'Electrical', 'Safety'];
 const rowColor = (comment) => (comment ? '#dcfce7' : '#fff');
 
-export function ViewPanel({ viewDate, setViewDate, data }) {
+export function ViewPanel({ viewDate, setViewDate, data, role, onDownload }) {
   const getTrains = (date) => data[date]?.trains || [];
 
   return (
@@ -14,6 +14,11 @@ export function ViewPanel({ viewDate, setViewDate, data }) {
           <label>View Date</label>
           <input type="date" value={viewDate} onChange={(e) => setViewDate(e.target.value)} />
         </div>
+        {role === 'admin' && (
+          <button className="btn-secondary" onClick={() => onDownload(viewDate)}>
+            Download inspection XLSX
+          </button>
+        )}
       </div>
 
       {getTrains(viewDate).length === 0 ? (
