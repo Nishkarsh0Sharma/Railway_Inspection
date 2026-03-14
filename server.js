@@ -10,7 +10,7 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT || 3001;
-const DB_FILE = path.join(__dirname, 'data.db');
+const DB_FILE = process.env.DB_PATH || path.join(__dirname, 'data.db');
 
 const db = new Database(DB_FILE);
 db.pragma('journal_mode = WAL');
@@ -112,7 +112,12 @@ function requireAdmin(req, res, next) {
   next();
 }
 
-app.use(cors());
+const FRONTEND_ORIGIN = process.env.FRONTEND_URL || '*';
+app.use(cors({
+  origin: FRONTEND_ORIGIN,
+  methods: ['GET', 'POST', 'DELETE', 'PUT'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(express.json());
 
 app.post('/api/auth/login', (req, res) => {

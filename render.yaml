@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: railway-backend
+    env: node
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: FRONTEND_URL
+        sync: false   # Set this to your Vercel frontend URL after deploying the frontend
+      - key: DB_PATH
+        value: /data/data.db
+    # Persistent disk for SQLite — requires a paid Render plan.
+    # On the free tier, remove the 'disk' section below and 'DB_PATH' above;
+    # data will still work but will reset on every redeploy/restart.
+    disk:
+      name: sqlite-data
+      mountPath: /data
+      sizeGB: 1
