@@ -9,7 +9,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 5000;
 const DB_FILE = process.env.DB_PATH || path.join(__dirname, 'data.db');
 
 const db = new Database(DB_FILE);
@@ -230,6 +230,12 @@ app.get('/api/audit', authenticate, requireAdmin, (req, res) => {
   res.json(rows);
 });
 
-app.listen(PORT, () => {
+app.use(express.static(path.join(__dirname, 'dist')));
+
+app.get('/{*path}', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+});
+
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running on port ${PORT}`);
 });
