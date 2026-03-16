@@ -1,7 +1,7 @@
 // Minimal data layer abstraction for the RailTracker app.
 // This keeps the app consistent while enabling future migration to a real backend.
 
-const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001/api';
+const API_BASE = import.meta.env.VITE_API_BASE_URL || '/api';
 const MAX_DAYS = 31;
 
 const formatDate = (d) => d.toISOString().split('T')[0];

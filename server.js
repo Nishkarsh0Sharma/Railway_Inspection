@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { existsSync } from 'fs';
 import Database from 'better-sqlite3';
 import crypto from 'crypto';
 
@@ -9,7 +10,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 5000;
 const DB_FILE = process.env.DB_PATH || path.join(__dirname, 'data.db');
 
 const db = new Database(DB_FILE);
@@ -107,6 +108,24 @@ function authenticate(req, res, next) {
   next();
 }
 
+const ALLOWED_ORIGINS = [
+  'https://railways-inspection.vercel.app',
+  ...(process.env.FRONTEND_URL ? [process.env.FRONTEND_URL] : []),
+];
+const IS_PRODUCTION = process.env.NODE_ENV === 'production';
+app.use(cors({
+  origin: IS_PRODUCTION
+    ? (origin, callback) => {
+        if (!origin || ALLOWED_ORIGINS.includes(origin)) return callback(null, true);
+        callback(new Error('Not allowed by CORS'));
+      }
+    : true,
+>>>>>>> main
+  methods: ['GET', 'POST', 'DELETE', 'PUT'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+app.use(express.json());
+=======
 function requireAdmin(req, res, next) {
   if (!req.user || req.user.role !== 'admin') return res.status(403).json({ error: 'Admin required' });
   next();
@@ -114,6 +133,24 @@ function requireAdmin(req, res, next) {
 
 app.use(cors({
   origin: true,
+  methods: ['GET', 'POST', 'DELETE', 'PUT'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+app.use(express.json());
+=======
+const ALLOWED_ORIGINS = [
+  'https://railways-inspection.vercel.app',
+  ...(process.env.FRONTEND_URL ? [process.env.FRONTEND_URL] : []),
+];
+const IS_PRODUCTION = process.env.NODE_ENV === 'production';
+app.use(cors({
+  origin: IS_PRODUCTION
+    ? (origin, callback) => {
+        if (!origin || ALLOWED_ORIGINS.includes(origin)) return callback(null, true);
+        callback(new Error('Not allowed by CORS'));
+      }
+    : true,
+>>>>>>> main
   methods: ['GET', 'POST', 'DELETE', 'PUT'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
@@ -229,6 +266,14 @@ app.get('/api/audit', authenticate, requireAdmin, (req, res) => {
   res.json(rows);
 });
 
-app.listen(PORT, () => {
+const distIndex = path.join(__dirname, 'dist', 'index.html');
+if (existsSync(distIndex)) {
+  app.use(express.static(path.join(__dirname, 'dist')));
+  app.get('/{*path}', (req, res) => {
+    res.sendFile(distIndex);
+  });
+}
+
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running on port ${PORT}`);
 });
