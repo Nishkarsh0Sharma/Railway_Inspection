@@ -112,9 +112,8 @@ function requireAdmin(req, res, next) {
   next();
 }
 
-const FRONTEND_ORIGIN = process.env.FRONTEND_URL || '*';
 app.use(cors({
-  origin: FRONTEND_ORIGIN,
+  origin: true,
   methods: ['GET', 'POST', 'DELETE', 'PUT'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
