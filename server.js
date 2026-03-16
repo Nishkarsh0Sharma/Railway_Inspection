@@ -108,11 +108,6 @@ function authenticate(req, res, next) {
   next();
 }
 
-function requireAdmin(req, res, next) {
-  if (!req.user || req.user.role !== 'admin') return res.status(403).json({ error: 'Admin required' });
-  next();
-}
-
 const ALLOWED_ORIGINS = [
   'https://railways-inspection.vercel.app',
   ...(process.env.FRONTEND_URL ? [process.env.FRONTEND_URL] : []),
@@ -125,6 +120,37 @@ app.use(cors({
         callback(new Error('Not allowed by CORS'));
       }
     : true,
+>>>>>>> main
+  methods: ['GET', 'POST', 'DELETE', 'PUT'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+app.use(express.json());
+=======
+function requireAdmin(req, res, next) {
+  if (!req.user || req.user.role !== 'admin') return res.status(403).json({ error: 'Admin required' });
+  next();
+}
+
+app.use(cors({
+  origin: true,
+  methods: ['GET', 'POST', 'DELETE', 'PUT'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+app.use(express.json());
+=======
+const ALLOWED_ORIGINS = [
+  'https://railways-inspection.vercel.app',
+  ...(process.env.FRONTEND_URL ? [process.env.FRONTEND_URL] : []),
+];
+const IS_PRODUCTION = process.env.NODE_ENV === 'production';
+app.use(cors({
+  origin: IS_PRODUCTION
+    ? (origin, callback) => {
+        if (!origin || ALLOWED_ORIGINS.includes(origin)) return callback(null, true);
+        callback(new Error('Not allowed by CORS'));
+      }
+    : true,
+>>>>>>> main
   methods: ['GET', 'POST', 'DELETE', 'PUT'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));

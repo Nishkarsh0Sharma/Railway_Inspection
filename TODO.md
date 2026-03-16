@@ -1,10 +1,14 @@
-# Railway Inspection Deployment Fix Task
+# Railway Deploy Task
 
-1. [x] Understand project (Train inspection tracker)
-2. [x] Diagnose deployment (env vars, persistence)
-3. [x] Verify backend API (curl /data, /login OK)
-4. [x] Install gh CLI (installing...)
-5. [x] Update README.md with env docs
-6. [ ] Create branch blackboxai/deployment-docs
-7. [ ] Commit & push
-8. [ ] Open PR to main
+1. [x] Repo confirmed Railway_Inspection
+2. [x] vite.config.js API fix
+3. [x] railway.json created
+4. [ ] Railway CLI: npm i -g @railway/cli
+5. [ ] railway login
+6. [ ] railway init
+7. [ ] railway volume create data-volume
+8. [ ] railway link
+9. [ ] railway up
+10. [ ] Get URL → Update Vercel VITE_API_BASE_URL
+11. [ ] Test full stack
+12. [ ] Merge PR to main

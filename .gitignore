@@ -6,3 +6,5 @@ npm-debug.log
 data.db
 /public
 
+.vercel
+.env*.local
